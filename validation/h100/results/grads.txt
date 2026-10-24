@@ -1,0 +1,323 @@
+## bwd N16_P64_R4_C8_BB128
+grad       A_vs_ref   B_vs_ref     B_vs_A bitwise
+dq        5.095e-03  5.095e-03  0.000e+00 True
+dk        7.862e-03  7.862e-03  0.000e+00 True
+dv        6.059e-03  6.059e-03  0.000e+00 True
+dA        7.794e-03  7.795e-03  1.616e-07 False
+ddt       5.632e-03  5.632e-03  1.213e-07 False
+dtrap     7.367e-03  7.367e-03  4.419e-06 False
+dq_bias   6.171e-03  6.171e-03  0.000e+00 True
+dk_bias   7.012e-03  7.012e-03  0.000e+00 True
+dmimo_v   7.718e-03  7.718e-03  0.000e+00 True
+dmimo_z   3.634e-03  3.634e-03  2.502e-07 False
+dmimo_o   9.102e-03  9.102e-03  0.000e+00 True
+dangles   7.253e-03  7.253e-03  0.000e+00 True
+dD        5.479e-03  5.479e-03  3.177e-07 False
+dz        7.666e-03  7.666e-03  0.000e+00 True
+median ms: A 2.692  B 2.556  B/A 0.950
+max B_vs_A rel: 4.419e-06
+
+## bwd N32_P64_R4_C16_BB256
+grad       A_vs_ref   B_vs_ref     B_vs_A bitwise
+dq        6.712e-03  6.712e-03  0.000e+00 True
+dk        6.572e-03  6.572e-03  0.000e+00 True
+dv        4.899e-03  4.899e-03  0.000e+00 True
+dA        6.289e-03  6.289e-03  1.590e-07 False
+ddt       5.764e-03  5.764e-03  1.523e-07 False
+dtrap     3.917e-03  3.917e-03  4.902e-04 False
+dq_bias   5.780e-03  5.780e-03  0.000e+00 True
+dk_bias   7.850e-03  7.850e-03  0.000e+00 True
+dmimo_v   8.100e-03  8.100e-03  0.000e+00 True
+dmimo_z   6.327e-03  6.327e-03  1.398e-07 False
+dmimo_o   4.663e-03  4.663e-03  0.000e+00 True
+dangles   7.384e-03  7.384e-03  0.000e+00 True
+dD        5.445e-03  5.445e-03  2.922e-07 False
+dz        6.913e-03  6.913e-03  0.000e+00 True
+median ms: A 2.624  B 2.491  B/A 0.950
+max B_vs_A rel: 4.902e-04
+
+## bwd N64_P64_R4_C16_BB256
+grad       A_vs_ref   B_vs_ref     B_vs_A bitwise
+dq        1.258e-02  1.258e-02  0.000e+00 True
+dk        1.061e-02  1.061e-02  0.000e+00 True
+dv        1.178e-02  1.178e-02  0.000e+00 True
+dA        4.212e-03  4.212e-03  9.732e-08 False
+ddt       8.482e-03  8.482e-03  1.222e-07 False
+dtrap     4.885e-03  4.885e-03  3.189e-04 False
+dq_bias   6.644e-03  6.644e-03  0.000e+00 True
+dk_bias   5.855e-03  5.855e-03  0.000e+00 True
+dmimo_v   7.351e-03  7.351e-03  0.000e+00 True
+dmimo_z   4.975e-03  4.975e-03  1.510e-07 False
+dmimo_o   5.264e-03  5.264e-03  0.000e+00 True
+dangles   6.539e-03  6.539e-03  0.000e+00 True
+dD        3.092e-03  3.092e-03  1.839e-07 False
+dz        1.192e-02  1.192e-02  0.000e+00 True
+median ms: A 3.040  B 2.825  B/A 0.929
+max B_vs_A rel: 3.189e-04
+
+## bwd N128_P64_R4_C16_BB256
+grad       A_vs_ref   B_vs_ref     B_vs_A bitwise
+dq        1.171e-02  1.171e-02  0.000e+00 True
+dk        1.447e-02  1.447e-02  0.000e+00 True
+dv        1.695e-02  1.695e-02  0.000e+00 True
+dA        7.596e-03  7.596e-03  1.652e-07 False
+ddt       6.716e-03  6.716e-03  1.197e-07 False
+dtrap     5.484e-03  5.484e-03  2.831e-05 False
+dq_bias   9.688e-03  9.688e-03  0.000e+00 True
+dk_bias   9.018e-03  9.018e-03  0.000e+00 True
+dmimo_v   5.514e-03  5.514e-03  0.000e+00 True
+dmimo_z   7.943e-03  7.943e-03  1.578e-07 False
+dmimo_o   8.013e-03  8.013e-03  0.000e+00 True
+dangles   1.621e-02  1.621e-02  0.000e+00 True
+dD        4.109e-03  4.108e-03  2.202e-07 False
+dz        8.176e-03  8.176e-03  0.000e+00 True
+median ms: A 3.887  B 3.796  B/A 0.976
+max B_vs_A rel: 2.831e-05
+
+## bwd N256_P64_R4_C8_BB256
+grad       A_vs_ref   B_vs_ref     B_vs_A bitwise
+dq        1.050e-02  1.050e-02  0.000e+00 True
+dk        6.670e-03  6.670e-03  0.000e+00 True
+dv        1.625e-02  1.625e-02  0.000e+00 True
+dA        5.209e-03  5.209e-03  1.304e-07 False
+ddt       6.025e-03  6.025e-03  1.034e-07 False
+dtrap     3.018e-03  3.018e-03  5.661e-05 False
+dq_bias   1.083e-02  1.083e-02  0.000e+00 True
+dk_bias   9.865e-03  9.865e-03  0.000e+00 True
+dmimo_v   4.948e-03  4.948e-03  0.000e+00 True
+dmimo_z   7.815e-03  7.815e-03  1.748e-07 False
+dmimo_o   7.600e-03  7.600e-03  0.000e+00 True
+dangles   6.719e-03  6.719e-03  0.000e+00 True
+dD        4.337e-03  4.337e-03  3.390e-07 False
+dz        1.056e-02  1.056e-02  0.000e+00 True
+median ms: A 6.690  B 7.204  B/A 1.077
+max B_vs_A rel: 5.661e-05
+
+## bwd N64_P128_R4_C16_BB256
+grad       A_vs_ref   B_vs_ref     B_vs_A bitwise
+dq        8.615e-03  8.615e-03  0.000e+00 True
+dk        7.306e-03  7.306e-03  0.000e+00 True
+dv        7.117e-03  7.117e-03  0.000e+00 True
+dA        8.140e-03  8.140e-03  1.814e-07 False
+ddt       6.210e-03  6.210e-03  1.042e-07 False
+dtrap     8.596e-03  8.596e-03  1.806e-04 False
+dq_bias   7.658e-03  7.658e-03  0.000e+00 True
+dk_bias   8.035e-03  8.035e-03  0.000e+00 True
+dmimo_v   5.125e-03  5.125e-03  0.000e+00 True
+dmimo_z   4.851e-03  4.851e-03  0.000e+00 True
+dmimo_o   4.641e-03  4.641e-03  0.000e+00 True
+dangles   5.140e-03  5.140e-03  0.000e+00 True
+dD        6.294e-03  6.294e-03  3.311e-07 False
+dz        7.166e-03  7.166e-03  0.000e+00 True
+median ms: A 3.774  B 3.908  B/A 1.036
+max B_vs_A rel: 1.806e-04
+
+## bwd N128_P32_R4_C16_BB256
+grad       A_vs_ref   B_vs_ref     B_vs_A bitwise
+dq        8.935e-03  8.935e-03  0.000e+00 True
+dk        1.223e-02  1.223e-02  0.000e+00 True
+dv        8.240e-03  8.240e-03  0.000e+00 True
+dA        7.013e-03  7.013e-03  1.941e-07 False
+ddt       5.205e-03  5.205e-03  1.039e-07 False
+dtrap     6.019e-03  6.019e-03  2.248e-04 False
+dq_bias   1.081e-02  1.081e-02  0.000e+00 True
+dk_bias   8.475e-03  8.475e-03  0.000e+00 True
+dmimo_v   5.900e-03  5.900e-03  0.000e+00 True
+dmimo_z   4.838e-03  4.838e-03  1.756e-07 False
+dmimo_o   8.592e-03  8.592e-03  0.000e+00 True
+dangles   8.022e-03  8.022e-03  0.000e+00 True
+dD        4.843e-03  4.843e-03  3.380e-07 False
+dz        8.213e-03  8.213e-03  0.000e+00 True
+median ms: A 3.341  B 3.326  B/A 0.996
+max B_vs_A rel: 2.248e-04
+
+## bwd N128_P128_R4_C8_BB256
+grad       A_vs_ref   B_vs_ref     B_vs_A bitwise
+dq        1.036e-02  1.036e-02  0.000e+00 True
+dk        1.238e-02  1.238e-02  0.000e+00 True
+dv        8.583e-03  8.583e-03  0.000e+00 True
+dA        8.721e-03  8.721e-03  1.583e-07 False
+ddt       7.072e-03  7.072e-03  1.061e-07 False
+dtrap     7.018e-03  7.018e-03  1.093e-04 False
+dq_bias   5.834e-03  5.834e-03  0.000e+00 True
+dk_bias   6.414e-03  6.414e-03  0.000e+00 True
+dmimo_v   5.918e-03  5.918e-03  0.000e+00 True
+dmimo_z   7.001e-03  7.001e-03  0.000e+00 True
+dmimo_o   6.558e-03  6.558e-03  0.000e+00 True
+dangles   1.054e-02  1.054e-02  0.000e+00 True
+dD        3.497e-03  3.497e-03  1.391e-07 False
+dz        8.790e-03  8.790e-03  0.000e+00 True
+median ms: A 6.706  B 6.789  B/A 1.012
+max B_vs_A rel: 1.093e-04
+
+## bwd N128_P64_R8_C8_BB256
+grad       A_vs_ref   B_vs_ref     B_vs_A bitwise
+dq        1.449e-02  1.449e-02  0.000e+00 True
+dk        1.125e-02  1.125e-02  0.000e+00 True
+dv        8.767e-03  8.767e-03  0.000e+00 True
+dA        6.763e-03  6.763e-03  1.787e-07 False
+ddt       7.783e-03  7.783e-03  1.024e-07 False
+dtrap     7.496e-03  7.496e-03  1.838e-04 False
+dq_bias   6.593e-03  6.593e-03  0.000e+00 True
+dk_bias   6.255e-03  6.255e-03  0.000e+00 True
+dmimo_v   7.792e-03  7.792e-03  0.000e+00 True
+dmimo_z   7.998e-03  7.998e-03  2.169e-07 False
+dmimo_o   4.226e-03  4.226e-03  0.000e+00 True
+dangles   8.719e-03  8.719e-03  0.000e+00 True
+dD        2.005e-03  2.005e-03  3.645e-07 False
+dz        1.024e-02  1.024e-02  0.000e+00 True
+median ms: A 8.010  B 7.643  B/A 0.954
+max B_vs_A rel: 1.838e-04
+
+## bwd N128_P64_R2_C32_BB256
+grad       A_vs_ref   B_vs_ref     B_vs_A bitwise
+dq        8.549e-03  8.549e-03  0.000e+00 True
+dk        8.954e-03  8.954e-03  0.000e+00 True
+dv        1.191e-02  1.191e-02  0.000e+00 True
+dA        7.353e-03  7.353e-03  1.418e-07 False
+ddt       3.947e-03  3.947e-03  7.835e-08 False
+dtrap     5.568e-03  5.568e-03  2.530e-04 False
+dq_bias   9.141e-03  9.141e-03  0.000e+00 True
+dk_bias   9.061e-03  9.061e-03  0.000e+00 True
+dmimo_v   7.234e-03  7.234e-03  0.000e+00 True
+dmimo_z   5.488e-03  5.488e-03  1.229e-07 False
+dmimo_o   4.926e-03  4.926e-03  0.000e+00 True
+dangles   8.254e-03  8.254e-03  0.000e+00 True
+dD        1.972e-03  1.972e-03  1.144e-07 False
+dz        8.482e-03  8.482e-03  0.000e+00 True
+median ms: A 2.068  B 2.008  B/A 0.971
+max B_vs_A rel: 2.530e-04
+
+## bwd N128_P64_R1_C64_BB256
+grad       A_vs_ref   B_vs_ref     B_vs_A bitwise
+dq        1.033e-02  1.033e-02  0.000e+00 True
+dk        1.162e-02  1.162e-02  0.000e+00 True
+dv        1.587e-02  1.587e-02  0.000e+00 True
+dA        8.868e-03  8.868e-03  1.139e-07 False
+ddt       9.974e-03  9.974e-03  0.000e+00 True
+dtrap     1.481e-02  1.481e-02  0.000e+00 True
+dq_bias   5.762e-03  5.762e-03  0.000e+00 True
+dk_bias   4.928e-03  4.928e-03  0.000e+00 True
+dmimo_v   7.131e-03  7.131e-03  0.000e+00 True
+dmimo_z   7.108e-03  7.108e-03  9.476e-08 False
+dmimo_o   5.302e-03  5.302e-03  0.000e+00 True
+dangles   8.995e-03  8.995e-03  0.000e+00 True
+dD        4.433e-03  4.433e-03  2.196e-07 False
+dz        7.020e-03  7.020e-03  0.000e+00 True
+median ms: A 1.399  B 1.341  B/A 0.959
+max B_vs_A rel: 2.196e-07
+
+## bwd_varlen N16_P64_R4_C8_BB128
+grad       A_vs_ref   B_vs_ref     B_vs_A bitwise
+dq        7.877e-03  7.877e-03  0.000e+00 True
+dk        1.175e-02  1.175e-02  0.000e+00 True
+dv        5.069e-03  5.069e-03  0.000e+00 True
+dA        7.817e-03  7.817e-03  1.588e-07 False
+ddt       5.285e-03  5.285e-03  7.538e-08 False
+dtrap     8.146e-03  8.146e-03  0.000e+00 True
+dq_bias   7.160e-03  7.160e-03  0.000e+00 True
+dk_bias   6.322e-03  6.322e-03  0.000e+00 True
+dmimo_v   9.073e-03  9.073e-03  0.000e+00 True
+dmimo_z   8.104e-03  8.104e-03  1.403e-07 False
+dmimo_o   3.041e-03  3.041e-03  0.000e+00 True
+dangles   9.633e-03  9.633e-03  0.000e+00 True
+dD        5.348e-03  5.348e-03  1.149e-07 False
+dz        5.845e-03  5.845e-03  0.000e+00 True
+median ms: A 0.909  B 0.908  B/A 0.999
+max B_vs_A rel: 1.588e-07
+
+## bwd_varlen N32_P64_R4_C16_BB256
+grad       A_vs_ref   B_vs_ref     B_vs_A bitwise
+dq        8.432e-03  8.432e-03  0.000e+00 True
+dk        7.625e-03  7.625e-03  0.000e+00 True
+dv        5.719e-03  5.719e-03  0.000e+00 True
+dA        6.071e-03  6.071e-03  1.655e-07 False
+ddt       6.057e-03  6.057e-03  1.255e-07 False
+dtrap     5.305e-03  5.305e-03  0.000e+00 True
+dq_bias   5.722e-03  5.722e-03  0.000e+00 True
+dk_bias   5.655e-03  5.655e-03  0.000e+00 True
+dmimo_v   4.464e-03  4.464e-03  0.000e+00 True
+dmimo_z   9.178e-03  9.178e-03  1.216e-07 False
+dmimo_o   6.700e-03  6.700e-03  0.000e+00 True
+dangles   6.879e-03  6.879e-03  0.000e+00 True
+dD        2.369e-03  2.369e-03  1.048e-07 False
+dz        9.909e-03  9.909e-03  0.000e+00 True
+median ms: A 0.934  B 0.960  B/A 1.029
+max B_vs_A rel: 1.655e-07
+
+## bwd_varlen N64_P64_R4_C16_BB256
+grad       A_vs_ref   B_vs_ref     B_vs_A bitwise
+dq        6.186e-03  6.186e-03  0.000e+00 True
+dk        9.056e-03  9.056e-03  0.000e+00 True
+dv        5.606e-03  5.606e-03  3.212e-06 False
+dA        6.120e-03  6.120e-03  1.300e-07 False
+ddt       8.816e-03  8.816e-03  1.363e-07 False
+dtrap     4.519e-03  4.519e-03  0.000e+00 True
+dq_bias   8.657e-03  8.657e-03  0.000e+00 True
+dk_bias   7.418e-03  7.418e-03  0.000e+00 True
+dmimo_v   2.115e-03  2.115e-03  6.016e-07 False
+dmimo_z   4.378e-03  4.379e-03  1.078e-06 False
+dmimo_o   3.908e-03  3.908e-03  2.858e-07 False
+dangles   1.076e-02  1.076e-02  0.000e+00 True
+dD        4.262e-03  4.262e-03  1.715e-07 False
+dz        8.414e-03  8.414e-03  0.000e+00 True
+median ms: A 0.941  B 0.917  B/A 0.975
+max B_vs_A rel: 3.212e-06
+
+## bwd_varlen N128_P64_R4_C16_BB256
+grad       A_vs_ref   B_vs_ref     B_vs_A bitwise
+dq        1.385e-02  1.385e-02  0.000e+00 True
+dk        8.769e-03  8.769e-03  0.000e+00 True
+dv        7.256e-03  7.256e-03  0.000e+00 True
+dA        7.150e-03  7.150e-03  1.777e-07 False
+ddt       6.877e-03  6.876e-03  1.013e-07 False
+dtrap     1.092e-02  1.092e-02  0.000e+00 True
+dq_bias   9.532e-03  9.532e-03  0.000e+00 True
+dk_bias   6.553e-03  6.553e-03  0.000e+00 True
+dmimo_v   1.293e-02  1.293e-02  0.000e+00 True
+dmimo_z   5.050e-03  5.050e-03  7.741e-08 False
+dmimo_o   6.174e-03  6.174e-03  0.000e+00 True
+dangles   1.264e-02  1.264e-02  0.000e+00 True
+dD        2.788e-03  2.788e-03  6.701e-08 False
+dz        1.212e-02  1.212e-02  0.000e+00 True
+median ms: A 0.960  B 0.952  B/A 0.992
+max B_vs_A rel: 1.777e-07
+
+## bwd_varlen N128_P64_R2_C32_BB256
+grad       A_vs_ref   B_vs_ref     B_vs_A bitwise
+dq        8.488e-03  8.488e-03  0.000e+00 True
+dk        6.063e-03  6.063e-03  0.000e+00 True
+dv        5.299e-03  5.299e-03  0.000e+00 True
+dA        6.545e-03  6.545e-03  1.464e-07 False
+ddt       5.037e-03  5.037e-03  7.710e-08 False
+dtrap     8.878e-03  8.878e-03  2.466e-06 False
+dq_bias   1.208e-02  1.208e-02  0.000e+00 True
+dk_bias   6.246e-03  6.246e-03  0.000e+00 True
+dmimo_v   1.145e-02  1.145e-02  0.000e+00 True
+dmimo_z   1.351e-02  1.351e-02  1.175e-07 False
+dmimo_o   4.348e-03  4.348e-03  0.000e+00 True
+dangles   4.259e-03  4.259e-03  0.000e+00 True
+dD        4.860e-03  4.860e-03  1.276e-07 False
+dz        6.967e-03  6.967e-03  0.000e+00 True
+median ms: A 0.951  B 0.918  B/A 0.965
+max B_vs_A rel: 2.466e-06
+
+## bwd_varlen N128_P64_R1_C64_BB256
+grad       A_vs_ref   B_vs_ref     B_vs_A bitwise
+dq        1.077e-02  1.077e-02  0.000e+00 True
+dk        7.666e-03  7.666e-03  0.000e+00 True
+dv        5.575e-03  5.575e-03  0.000e+00 True
+dA        5.500e-03  5.500e-03  4.974e-08 False
+ddt       7.657e-03  7.657e-03  0.000e+00 True
+dtrap     8.119e-03  8.119e-03  0.000e+00 True
+dq_bias   1.193e-02  1.193e-02  0.000e+00 True
+dk_bias   7.930e-03  7.930e-03  0.000e+00 True
+dmimo_v   7.047e-03  7.047e-03  0.000e+00 True
+dmimo_z   8.837e-03  8.837e-03  1.178e-07 False
+dmimo_o   4.922e-03  4.922e-03  0.000e+00 True
+dangles   4.445e-03  4.445e-03  0.000e+00 True
+dD        1.104e-02  1.104e-02  2.383e-07 False
+dz        4.477e-03  4.477e-03  0.000e+00 True
+median ms: A 0.985  B 0.961  B/A 0.976
+max B_vs_A rel: 2.383e-07
+

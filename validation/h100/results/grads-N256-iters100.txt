@@ -1,0 +1,18 @@
+## bwd N256_P64_R4_C8_BB256
+grad       A_vs_ref   B_vs_ref     B_vs_A bitwise
+dq        1.050e-02  1.050e-02  0.000e+00 True
+dk        6.670e-03  6.670e-03  0.000e+00 True
+dv        1.625e-02  1.625e-02  0.000e+00 True
+dA        5.209e-03  5.209e-03  1.304e-07 False
+ddt       6.025e-03  6.025e-03  1.034e-07 False
+dtrap     3.018e-03  3.018e-03  5.661e-05 False
+dq_bias   1.083e-02  1.083e-02  0.000e+00 True
+dk_bias   9.865e-03  9.865e-03  0.000e+00 True
+dmimo_v   4.948e-03  4.948e-03  0.000e+00 True
+dmimo_z   7.815e-03  7.815e-03  1.748e-07 False
+dmimo_o   7.600e-03  7.600e-03  0.000e+00 True
+dangles   6.719e-03  6.719e-03  0.000e+00 True
+dD        4.337e-03  4.337e-03  3.390e-07 False
+dz        1.056e-02  1.056e-02  0.000e+00 True
+median ms: A 6.621  B 7.135  B/A 1.078
+max B_vs_A rel: 5.661e-05
