@@ -1,1 +1,1 @@
-saved bwd_varlen N64_P64_R4_C16_BB256 median 0.941 ms -> /home/kyle/mamba-h100/validation/h100/results/grads/base-bwd_varlen-N64_P64_R4_C16_BB256.pt
+saved bwd_varlen N64_P64_R4_C16_BB256 median 0.929 ms -> /home/kyle/mamba-h100/validation/h100/results/grads/base-bwd_varlen-N64_P64_R4_C16_BB256.pt

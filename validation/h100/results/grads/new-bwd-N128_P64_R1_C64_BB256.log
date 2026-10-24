@@ -1,1 +1,1 @@
-saved bwd N128_P64_R1_C64_BB256 median 1.341 ms -> /home/kyle/mamba-h100/validation/h100/results/grads/new-bwd-N128_P64_R1_C64_BB256.pt
+saved bwd N128_P64_R1_C64_BB256 median 1.303 ms -> /home/kyle/mamba-h100/validation/h100/results/grads/new-bwd-N128_P64_R1_C64_BB256.pt

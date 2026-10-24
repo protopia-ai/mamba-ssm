@@ -1,0 +1,5 @@
+# bwd_varlen N128_P64_R2_C32_BB256 rerun with --iters 100, three stacks side by side (GPUs 0/3/2), 2026-10-24 12:03 BST
+# grads-latest.txt showed B/A 1.633 at --iters 30 while the suite ran; per-kernel nsys times were identical (bwd_bwd 85.6 vs 86.2 us).
+base   median 0.967 ms
+new    median 0.918 ms
+latest median 0.907 ms  (B/A 0.938)

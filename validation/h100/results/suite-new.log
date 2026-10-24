@@ -1,34 +1,37 @@
 ........................................................................ [ 66%]
 ...................................s                                     [100%]
 =============================== warnings summary ===============================
-tests/ops/tilelang/test_mamba3_mimo.py: 481 warnings
-tests/ops/cute/test_mamba3_mimo_step.py: 247 warnings
-tests/modules/test_mamba3_varlen.py: 476 warnings
-tests/ops/triton/test_mamba3_siso.py: 1323 warnings
-  /home/kyle/mamba-h100-validation/venv-new/lib/python3.13/site-packages/triton/compiler/code_generator.py:629: DeprecationWarning: AnnAssign.__init__ missing 1 required positional argument: 'simple'. This will become an error in Python 3.15.
-    init_node = ast.AnnAssign(target=st_target, value=default_value, annotation=annotation)
-
 tests/ops/tilelang/test_mamba3_mimo.py: 125 warnings
 tests/ops/cute/test_mamba3_mimo_step.py: 4 warnings
 tests/modules/test_mamba3_varlen.py: 5 warnings
   /home/kyle/mamba-h100-validation/venv-new/lib/python3.13/site-packages/tilelang/cache/__init__.py:90: DeprecationWarning: `tl.disable_tma_lower` is deprecated. Use `T.copy(..., disable_tma=True)` per-copy instead.
     return cache.cached(
 
-tests/ops/tilelang/test_mamba3_mimo.py: 125 warnings
+tests/ops/tilelang/test_mamba3_mimo.py: 93 warnings
 tests/ops/cute/test_mamba3_mimo_step.py: 4 warnings
-tests/modules/test_mamba3_varlen.py: 5 warnings
-  /home/kyle/mamba-h100-validation/venv-new/lib/python3.13/site-packages/tilelang/cache/kernel_cache.py:427: DeprecationWarning: `tl.disable_tma_lower` is deprecated. Use `T.copy(..., disable_tma=True)` per-copy instead.
-    kernel = JITKernel(
+tests/modules/test_mamba3_varlen.py: 4 warnings
+  /home/kyle/mamba-h100-validation/venv-new/lib/python3.13/site-packages/tilelang/jit/kernel.py:170: DeprecationWarning: `tl.disable_tma_lower` is deprecated. Use `T.copy(..., disable_tma=True)` per-copy instead.
+    instance = cls(
 
 tests/ops/tilelang/test_mamba3_mimo.py::test_mamba_mimo_bwd_combined_relative_errors_lt_10pct[N16_P64_R4_C8_BB128]
   /home/kyle/mamba-h100-validation/venv-new/lib/python3.13/site-packages/torch/autograd/graph.py:979: UserWarning: Attempting to run cuBLAS, but there was no current CUDA context! Attempting to set the primary context... (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/cuda/CublasHandlePool.cpp:408.)
     return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
 
-tests/ops/tilelang/test_mamba3_mimo.py: 1503 warnings
+tests/ops/tilelang/test_mamba3_mimo.py: 1275 warnings
 tests/ops/cute/test_mamba3_mimo_step.py: 6 warnings
-tests/modules/test_mamba3_varlen.py: 39 warnings
+tests/modules/test_mamba3_varlen.py: 33 warnings
   /home/kyle/mamba-h100-validation/venv-new/lib/python3.13/site-packages/tilelang/language/eager/builder.py:1171: DeprecationWarning: Failing to pass a value to the 'type_params' parameter of 'typing._eval_type' is deprecated, as it leads to incorrect behaviour when calling typing._eval_type on a stringified annotation that references a PEP 695 type parameter. It will be disallowed in Python 3.15.
     hints[name] = _eval_type(value, globalns=globalns, localns=localns)
+
+tests/ops/tilelang/test_mamba3_mimo.py: 32 warnings
+tests/modules/test_mamba3_varlen.py: 1 warning
+  /home/kyle/mamba-h100-validation/venv-new/lib/python3.13/site-packages/tilelang/cache/kernel_cache.py:427: DeprecationWarning: `tl.disable_tma_lower` is deprecated. Use `T.copy(..., disable_tma=True)` per-copy instead.
+    kernel = JITKernel(
+
+tests/ops/cute/test_mamba3_mimo_step.py: 8 warnings
+tests/modules/test_mamba3_varlen.py: 18 warnings
+  /home/kyle/mamba-h100-validation/venv-new/lib/python3.13/site-packages/triton/compiler/code_generator.py:629: DeprecationWarning: AnnAssign.__init__ missing 1 required positional argument: 'simple'. This will become an error in Python 3.15.
+    init_node = ast.AnnAssign(target=st_target, value=default_value, annotation=annotation)
 
 -- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
 ==================================== PASSES ====================================
@@ -180,7 +183,7 @@ _ test_mamba_mimo_bwd_combined_relative_errors_lt_10pct[N32_P64_R4_C16_BB256] __
 [debug] dq (N=32, P=64, R=4, chunk=16, bb_threads=256) stable_max_rel=0.006712 max_abs=9.359264e-02 bad_frac(rtol=0.1,atol=0.1)=0.000000
 [debug] dk (N=32, P=64, R=4, chunk=16, bb_threads=256) stable_max_rel=0.006572 max_abs=1.261406e-01 bad_frac(rtol=0.1,atol=0.1)=0.000000
 [debug] dv (N=32, P=64, R=4, chunk=16, bb_threads=256) stable_max_rel=0.004899 max_abs=3.675499e-01 bad_frac(rtol=0.1,atol=0.1)=0.000000
-[debug] dA (N=32, P=64, R=4, chunk=16, bb_threads=256) stable_max_rel=0.006289 max_abs=9.009857e-01 bad_frac(rtol=0.1,atol=0.1)=0.011070
+[debug] dA (N=32, P=64, R=4, chunk=16, bb_threads=256) stable_max_rel=0.006289 max_abs=9.009781e-01 bad_frac(rtol=0.1,atol=0.1)=0.011070
 [debug] ddt (N=32, P=64, R=4, chunk=16, bb_threads=256) stable_max_rel=0.005764 max_abs=1.729034e+00 bad_frac(rtol=0.1,atol=0.1)=0.019470
 [debug] dtrap (N=32, P=64, R=4, chunk=16, bb_threads=256) stable_max_rel=0.003917 max_abs=2.501621e-01 bad_frac(rtol=0.1,atol=0.1)=0.000031
 [debug] dq_bias (N=32, P=64, R=4, chunk=16, bb_threads=256) stable_max_rel=0.005780 max_abs=8.713551e-01 bad_frac(rtol=0.1,atol=0.1)=0.016113
@@ -212,7 +215,7 @@ _ test_mamba_mimo_bwd_combined_relative_errors_lt_10pct[N128_P64_R4_C16_BB256] _
 [debug] dq (N=128, P=64, R=4, chunk=16, bb_threads=256) stable_max_rel=0.011713 max_abs=2.643490e-01 bad_frac(rtol=0.1,atol=0.1)=0.000000
 [debug] dk (N=128, P=64, R=4, chunk=16, bb_threads=256) stable_max_rel=0.014470 max_abs=4.439011e-01 bad_frac(rtol=0.1,atol=0.1)=0.000000
 [debug] dv (N=128, P=64, R=4, chunk=16, bb_threads=256) stable_max_rel=0.016948 max_abs=1.826424e+00 bad_frac(rtol=0.1,atol=0.1)=0.000007
-[debug] dA (N=128, P=64, R=4, chunk=16, bb_threads=256) stable_max_rel=0.007596 max_abs=2.117630e+00 bad_frac(rtol=0.1,atol=0.1)=0.023903
+[debug] dA (N=128, P=64, R=4, chunk=16, bb_threads=256) stable_max_rel=0.007596 max_abs=2.117645e+00 bad_frac(rtol=0.1,atol=0.1)=0.023903
 [debug] ddt (N=128, P=64, R=4, chunk=16, bb_threads=256) stable_max_rel=0.006716 max_abs=5.135796e+00 bad_frac(rtol=0.1,atol=0.1)=0.029305
 [debug] dtrap (N=128, P=64, R=4, chunk=16, bb_threads=256) stable_max_rel=0.005484 max_abs=7.537384e-01 bad_frac(rtol=0.1,atol=0.1)=0.000191
 [debug] dq_bias (N=128, P=64, R=4, chunk=16, bb_threads=256) stable_max_rel=0.009688 max_abs=1.459511e+00 bad_frac(rtol=0.1,atol=0.1)=0.016479
@@ -244,7 +247,7 @@ _ test_mamba_mimo_bwd_combined_relative_errors_lt_10pct[N64_P128_R4_C16_BB256] _
 [debug] dq (N=64, P=128, R=4, chunk=16, bb_threads=256) stable_max_rel=0.008615 max_abs=1.668339e-01 bad_frac(rtol=0.1,atol=0.1)=0.000000
 [debug] dk (N=64, P=128, R=4, chunk=16, bb_threads=256) stable_max_rel=0.007306 max_abs=2.068787e-01 bad_frac(rtol=0.1,atol=0.1)=0.000000
 [debug] dv (N=64, P=128, R=4, chunk=16, bb_threads=256) stable_max_rel=0.007117 max_abs=9.182510e-01 bad_frac(rtol=0.1,atol=0.1)=0.000002
-[debug] dA (N=64, P=128, R=4, chunk=16, bb_threads=256) stable_max_rel=0.008140 max_abs=1.889153e+00 bad_frac(rtol=0.1,atol=0.1)=0.024391
+[debug] dA (N=64, P=128, R=4, chunk=16, bb_threads=256) stable_max_rel=0.008140 max_abs=1.889149e+00 bad_frac(rtol=0.1,atol=0.1)=0.024391
 [debug] ddt (N=64, P=128, R=4, chunk=16, bb_threads=256) stable_max_rel=0.006210 max_abs=3.650299e+00 bad_frac(rtol=0.1,atol=0.1)=0.028580
 [debug] dtrap (N=64, P=128, R=4, chunk=16, bb_threads=256) stable_max_rel=0.008596 max_abs=7.471280e-01 bad_frac(rtol=0.1,atol=0.1)=0.000183
 [debug] dq_bias (N=64, P=128, R=4, chunk=16, bb_threads=256) stable_max_rel=0.007658 max_abs=1.355419e+00 bad_frac(rtol=0.1,atol=0.1)=0.026611
@@ -260,7 +263,7 @@ _ test_mamba_mimo_bwd_combined_relative_errors_lt_10pct[N128_P32_R4_C16_BB256] _
 [debug] dq (N=128, P=32, R=4, chunk=16, bb_threads=256) stable_max_rel=0.008935 max_abs=1.835155e-01 bad_frac(rtol=0.1,atol=0.1)=0.000000
 [debug] dk (N=128, P=32, R=4, chunk=16, bb_threads=256) stable_max_rel=0.012232 max_abs=1.937609e-01 bad_frac(rtol=0.1,atol=0.1)=0.000000
 [debug] dv (N=128, P=32, R=4, chunk=16, bb_threads=256) stable_max_rel=0.008240 max_abs=1.095108e+00 bad_frac(rtol=0.1,atol=0.1)=0.000007
-[debug] dA (N=128, P=32, R=4, chunk=16, bb_threads=256) stable_max_rel=0.007013 max_abs=1.650101e+00 bad_frac(rtol=0.1,atol=0.1)=0.016266
+[debug] dA (N=128, P=32, R=4, chunk=16, bb_threads=256) stable_max_rel=0.007013 max_abs=1.650108e+00 bad_frac(rtol=0.1,atol=0.1)=0.016266
 [debug] ddt (N=128, P=32, R=4, chunk=16, bb_threads=256) stable_max_rel=0.005205 max_abs=3.062332e+00 bad_frac(rtol=0.1,atol=0.1)=0.024170
 [debug] dtrap (N=128, P=32, R=4, chunk=16, bb_threads=256) stable_max_rel=0.006019 max_abs=4.178638e-01 bad_frac(rtol=0.1,atol=0.1)=0.000046
 [debug] dq_bias (N=128, P=32, R=4, chunk=16, bb_threads=256) stable_max_rel=0.010813 max_abs=1.268227e+00 bad_frac(rtol=0.1,atol=0.1)=0.013794
@@ -292,7 +295,7 @@ _ test_mamba_mimo_bwd_combined_relative_errors_lt_10pct[N128_P64_R8_C8_BB256] __
 [debug] dq (N=128, P=64, R=8, chunk=8, bb_threads=256) stable_max_rel=0.014494 max_abs=1.114078e-01 bad_frac(rtol=0.1,atol=0.1)=0.000000
 [debug] dk (N=128, P=64, R=8, chunk=8, bb_threads=256) stable_max_rel=0.011248 max_abs=9.252024e-02 bad_frac(rtol=0.1,atol=0.1)=0.000000
 [debug] dv (N=128, P=64, R=8, chunk=8, bb_threads=256) stable_max_rel=0.008767 max_abs=4.163132e-01 bad_frac(rtol=0.1,atol=0.1)=0.000000
-[debug] dA (N=128, P=64, R=8, chunk=8, bb_threads=256) stable_max_rel=0.006763 max_abs=8.694611e-01 bad_frac(rtol=0.1,atol=0.1)=0.012085
+[debug] dA (N=128, P=64, R=8, chunk=8, bb_threads=256) stable_max_rel=0.006763 max_abs=8.694534e-01 bad_frac(rtol=0.1,atol=0.1)=0.012085
 [debug] ddt (N=128, P=64, R=8, chunk=8, bb_threads=256) stable_max_rel=0.007783 max_abs=2.608246e+00 bad_frac(rtol=0.1,atol=0.1)=0.021957
 [debug] dtrap (N=128, P=64, R=8, chunk=8, bb_threads=256) stable_max_rel=0.007496 max_abs=3.186469e-01 bad_frac(rtol=0.1,atol=0.1)=0.000008
 [debug] dq_bias (N=128, P=64, R=8, chunk=8, bb_threads=256) stable_max_rel=0.006593 max_abs=4.338627e-01 bad_frac(rtol=0.1,atol=0.1)=0.003540
@@ -340,7 +343,7 @@ _ test_mamba_mimo_bwd_combined_prereduce_relative_errors_lt_10pct[N16_P64_R4_C8_
 [debug] dq_prereduce (N=16, P=64, R=4, chunk=8, bb_threads=128) stable_max_rel=0.006738 max_abs=2.928715e-01 bad_frac(rtol=0.1,atol=0.1)=0.000517
 [debug] dk_prereduce (N=16, P=64, R=4, chunk=8, bb_threads=128) stable_max_rel=0.006525 max_abs=6.794281e-01 bad_frac(rtol=0.1,atol=0.1)=0.000376
 [debug] dv_prereduce (N=16, P=64, R=4, chunk=8, bb_threads=128) stable_max_rel=0.006259 max_abs=8.066578e-01 bad_frac(rtol=0.1,atol=0.1)=0.000023
-[debug] dA_prereduce (N=16, P=64, R=4, chunk=8, bb_threads=128) stable_max_rel=0.005542 max_abs=3.251831e+00 bad_frac(rtol=0.1,atol=0.1)=0.026001
+[debug] dA_prereduce (N=16, P=64, R=4, chunk=8, bb_threads=128) stable_max_rel=0.005542 max_abs=3.251801e+00 bad_frac(rtol=0.1,atol=0.1)=0.026001
 [debug] ddt_prereduce (N=16, P=64, R=4, chunk=8, bb_threads=128) stable_max_rel=0.005670 max_abs=5.274532e+00 bad_frac(rtol=0.1,atol=0.1)=0.027229
 [debug] dtrap_prereduce (N=16, P=64, R=4, chunk=8, bb_threads=128) stable_max_rel=0.004868 max_abs=1.287109e+00 bad_frac(rtol=0.1,atol=0.1)=0.000626
 [debug] dq_bias_prereduce (N=16, P=64, R=4, chunk=8, bb_threads=128) stable_max_rel=0.006226 max_abs=4.118721e+00 bad_frac(rtol=0.1,atol=0.1)=0.040039
@@ -353,7 +356,7 @@ _ test_mamba_mimo_bwd_combined_prereduce_relative_errors_lt_10pct[N32_P64_R4_C16
 [debug] dq_prereduce (N=32, P=64, R=4, chunk=16, bb_threads=256) stable_max_rel=0.007345 max_abs=3.483925e-01 bad_frac(rtol=0.1,atol=0.1)=0.000551
 [debug] dk_prereduce (N=32, P=64, R=4, chunk=16, bb_threads=256) stable_max_rel=0.011466 max_abs=9.359589e-01 bad_frac(rtol=0.1,atol=0.1)=0.000439
 [debug] dv_prereduce (N=32, P=64, R=4, chunk=16, bb_threads=256) stable_max_rel=0.006247 max_abs=1.295670e+00 bad_frac(rtol=0.1,atol=0.1)=0.000090
-[debug] dA_prereduce (N=32, P=64, R=4, chunk=16, bb_threads=256) stable_max_rel=0.006182 max_abs=5.125214e+00 bad_frac(rtol=0.1,atol=0.1)=0.028854
+[debug] dA_prereduce (N=32, P=64, R=4, chunk=16, bb_threads=256) stable_max_rel=0.006182 max_abs=5.125198e+00 bad_frac(rtol=0.1,atol=0.1)=0.028839
 [debug] ddt_prereduce (N=32, P=64, R=4, chunk=16, bb_threads=256) stable_max_rel=0.005185 max_abs=7.742035e+00 bad_frac(rtol=0.1,atol=0.1)=0.027641
 [debug] dtrap_prereduce (N=32, P=64, R=4, chunk=16, bb_threads=256) stable_max_rel=0.003688 max_abs=1.532745e+00 bad_frac(rtol=0.1,atol=0.1)=0.001450
 [debug] dq_bias_prereduce (N=32, P=64, R=4, chunk=16, bb_threads=256) stable_max_rel=0.006780 max_abs=4.929779e+00 bad_frac(rtol=0.1,atol=0.1)=0.026855
@@ -379,7 +382,7 @@ _ test_mamba_mimo_bwd_combined_prereduce_relative_errors_lt_10pct[N128_P64_R4_C1
 [debug] dq_prereduce (N=128, P=64, R=4, chunk=16, bb_threads=256) stable_max_rel=0.006860 max_abs=3.166924e-01 bad_frac(rtol=0.1,atol=0.1)=0.000403
 [debug] dk_prereduce (N=128, P=64, R=4, chunk=16, bb_threads=256) stable_max_rel=0.007400 max_abs=7.402725e-01 bad_frac(rtol=0.1,atol=0.1)=0.000335
 [debug] dv_prereduce (N=128, P=64, R=4, chunk=16, bb_threads=256) stable_max_rel=0.006171 max_abs=2.484009e+00 bad_frac(rtol=0.1,atol=0.1)=0.000517
-[debug] dA_prereduce (N=128, P=64, R=4, chunk=16, bb_threads=256) stable_max_rel=0.006044 max_abs=1.017554e+01 bad_frac(rtol=0.1,atol=0.1)=0.031303
+[debug] dA_prereduce (N=128, P=64, R=4, chunk=16, bb_threads=256) stable_max_rel=0.006044 max_abs=1.017563e+01 bad_frac(rtol=0.1,atol=0.1)=0.031303
 [debug] ddt_prereduce (N=128, P=64, R=4, chunk=16, bb_threads=256) stable_max_rel=0.005649 max_abs=1.488953e+01 bad_frac(rtol=0.1,atol=0.1)=0.028519
 [debug] dtrap_prereduce (N=128, P=64, R=4, chunk=16, bb_threads=256) stable_max_rel=0.005546 max_abs=3.386520e+00 bad_frac(rtol=0.1,atol=0.1)=0.003799
 [debug] dq_bias_prereduce (N=128, P=64, R=4, chunk=16, bb_threads=256) stable_max_rel=0.006446 max_abs=4.731689e+00 bad_frac(rtol=0.1,atol=0.1)=0.032349
@@ -392,7 +395,7 @@ _ test_mamba_mimo_bwd_combined_prereduce_relative_errors_lt_10pct[N256_P64_R4_C8
 [debug] dq_prereduce (N=256, P=64, R=4, chunk=8, bb_threads=256) stable_max_rel=0.007471 max_abs=3.810387e-01 bad_frac(rtol=0.1,atol=0.1)=0.000523
 [debug] dk_prereduce (N=256, P=64, R=4, chunk=8, bb_threads=256) stable_max_rel=0.006735 max_abs=9.914551e-01 bad_frac(rtol=0.1,atol=0.1)=0.000445
 [debug] dv_prereduce (N=256, P=64, R=4, chunk=8, bb_threads=256) stable_max_rel=0.008766 max_abs=4.001404e+00 bad_frac(rtol=0.1,atol=0.1)=0.001266
-[debug] dA_prereduce (N=256, P=64, R=4, chunk=8, bb_threads=256) stable_max_rel=0.011140 max_abs=2.762341e+01 bad_frac(rtol=0.1,atol=0.1)=0.033890
+[debug] dA_prereduce (N=256, P=64, R=4, chunk=8, bb_threads=256) stable_max_rel=0.011140 max_abs=2.762354e+01 bad_frac(rtol=0.1,atol=0.1)=0.033890
 [debug] ddt_prereduce (N=256, P=64, R=4, chunk=8, bb_threads=256) stable_max_rel=0.004966 max_abs=1.860889e+01 bad_frac(rtol=0.1,atol=0.1)=0.029663
 [debug] dtrap_prereduce (N=256, P=64, R=4, chunk=8, bb_threads=256) stable_max_rel=0.011991 max_abs=9.976257e+00 bad_frac(rtol=0.1,atol=0.1)=0.006363
 [debug] dq_bias_prereduce (N=256, P=64, R=4, chunk=8, bb_threads=256) stable_max_rel=0.006148 max_abs=4.829712e+00 bad_frac(rtol=0.1,atol=0.1)=0.031677
@@ -405,7 +408,7 @@ _ test_mamba_mimo_bwd_combined_prereduce_relative_errors_lt_10pct[N64_P128_R4_C1
 [debug] dq_prereduce (N=64, P=128, R=4, chunk=16, bb_threads=256) stable_max_rel=0.007480 max_abs=5.314178e-01 bad_frac(rtol=0.1,atol=0.1)=0.002134
 [debug] dk_prereduce (N=64, P=128, R=4, chunk=16, bb_threads=256) stable_max_rel=0.008521 max_abs=1.229401e+00 bad_frac(rtol=0.1,atol=0.1)=0.001590
 [debug] dv_prereduce (N=64, P=128, R=4, chunk=16, bb_threads=256) stable_max_rel=0.008397 max_abs=2.778091e+00 bad_frac(rtol=0.1,atol=0.1)=0.000210
-[debug] dA_prereduce (N=64, P=128, R=4, chunk=16, bb_threads=256) stable_max_rel=0.006161 max_abs=1.136732e+01 bad_frac(rtol=0.1,atol=0.1)=0.032211
+[debug] dA_prereduce (N=64, P=128, R=4, chunk=16, bb_threads=256) stable_max_rel=0.006161 max_abs=1.136734e+01 bad_frac(rtol=0.1,atol=0.1)=0.032211
 [debug] ddt_prereduce (N=64, P=128, R=4, chunk=16, bb_threads=256) stable_max_rel=0.005097 max_abs=1.477689e+01 bad_frac(rtol=0.1,atol=0.1)=0.028809
 [debug] dtrap_prereduce (N=64, P=128, R=4, chunk=16, bb_threads=256) stable_max_rel=0.004521 max_abs=3.086853e+00 bad_frac(rtol=0.1,atol=0.1)=0.003975
 [debug] dq_bias_prereduce (N=64, P=128, R=4, chunk=16, bb_threads=256) stable_max_rel=0.007020 max_abs=7.885117e+00 bad_frac(rtol=0.1,atol=0.1)=0.026123
@@ -418,7 +421,7 @@ _ test_mamba_mimo_bwd_combined_prereduce_relative_errors_lt_10pct[N128_P32_R4_C1
 [debug] dq_prereduce (N=128, P=32, R=4, chunk=16, bb_threads=256) stable_max_rel=0.006907 max_abs=2.370949e-01 bad_frac(rtol=0.1,atol=0.1)=0.000037
 [debug] dk_prereduce (N=128, P=32, R=4, chunk=16, bb_threads=256) stable_max_rel=0.007742 max_abs=8.027725e-01 bad_frac(rtol=0.1,atol=0.1)=0.000064
 [debug] dv_prereduce (N=128, P=32, R=4, chunk=16, bb_threads=256) stable_max_rel=0.008068 max_abs=3.018799e+00 bad_frac(rtol=0.1,atol=0.1)=0.000557
-[debug] dA_prereduce (N=128, P=32, R=4, chunk=16, bb_threads=256) stable_max_rel=0.006611 max_abs=9.712402e+00 bad_frac(rtol=0.1,atol=0.1)=0.031479
+[debug] dA_prereduce (N=128, P=32, R=4, chunk=16, bb_threads=256) stable_max_rel=0.006611 max_abs=9.712524e+00 bad_frac(rtol=0.1,atol=0.1)=0.031479
 [debug] ddt_prereduce (N=128, P=32, R=4, chunk=16, bb_threads=256) stable_max_rel=0.004987 max_abs=1.021076e+01 bad_frac(rtol=0.1,atol=0.1)=0.028366
 [debug] dtrap_prereduce (N=128, P=32, R=4, chunk=16, bb_threads=256) stable_max_rel=0.005812 max_abs=2.260483e+00 bad_frac(rtol=0.1,atol=0.1)=0.002419
 [debug] dq_bias_prereduce (N=128, P=32, R=4, chunk=16, bb_threads=256) stable_max_rel=0.004967 max_abs=3.070847e+00 bad_frac(rtol=0.1,atol=0.1)=0.031616
@@ -489,7 +492,7 @@ ______ test_fused_norm_bwd_relative_errors_lt_10pct[N32_P64_R4_C16_BB256] ______
 [debug] fused_norm_bwd_dq (N=32, P=64, R=4, chunk=16, bb_threads=256) stable_max_rel=0.011679 max_abs=1.585388e-01 bad_frac(rtol=0.1,atol=0.1)=0.000000
 [debug] fused_norm_bwd_dk (N=32, P=64, R=4, chunk=16, bb_threads=256) stable_max_rel=0.008078 max_abs=1.419086e-01 bad_frac(rtol=0.1,atol=0.1)=0.000000
 [debug] fused_norm_bwd_dv (N=32, P=64, R=4, chunk=16, bb_threads=256) stable_max_rel=0.004267 max_abs=2.208116e-01 bad_frac(rtol=0.1,atol=0.1)=0.000000
-[debug] fused_norm_bwd_dA (N=32, P=64, R=4, chunk=16, bb_threads=256) stable_max_rel=0.005259 max_abs=3.592682e-01 bad_frac(rtol=0.1,atol=0.1)=0.001259
+[debug] fused_norm_bwd_dA (N=32, P=64, R=4, chunk=16, bb_threads=256) stable_max_rel=0.005259 max_abs=3.592720e-01 bad_frac(rtol=0.1,atol=0.1)=0.001259
 [debug] fused_norm_bwd_ddt (N=32, P=64, R=4, chunk=16, bb_threads=256) stable_max_rel=0.006354 max_abs=1.710415e+00 bad_frac(rtol=0.1,atol=0.1)=0.010597
 [debug] fused_norm_bwd_dtrap (N=32, P=64, R=4, chunk=16, bb_threads=256) stable_max_rel=0.007402 max_abs=1.512184e-01 bad_frac(rtol=0.1,atol=0.1)=0.000000
 [debug] fused_norm_bwd_dq_bias (N=32, P=64, R=4, chunk=16, bb_threads=256) stable_max_rel=0.009068 max_abs=7.799244e-01 bad_frac(rtol=0.1,atol=0.1)=0.006836
@@ -506,7 +509,7 @@ _____ test_fused_norm_bwd_relative_errors_lt_10pct[N128_P64_R4_C16_BB256] ______
 [debug] fused_norm_bwd_dq (N=128, P=64, R=4, chunk=16, bb_threads=256) stable_max_rel=0.008745 max_abs=6.302023e-02 bad_frac(rtol=0.1,atol=0.1)=0.000000
 [debug] fused_norm_bwd_dk (N=128, P=64, R=4, chunk=16, bb_threads=256) stable_max_rel=0.013663 max_abs=1.373186e-01 bad_frac(rtol=0.1,atol=0.1)=0.000000
 [debug] fused_norm_bwd_dv (N=128, P=64, R=4, chunk=16, bb_threads=256) stable_max_rel=0.011393 max_abs=2.580891e-01 bad_frac(rtol=0.1,atol=0.1)=0.000000
-[debug] fused_norm_bwd_dA (N=128, P=64, R=4, chunk=16, bb_threads=256) stable_max_rel=0.006586 max_abs=3.410187e-01 bad_frac(rtol=0.1,atol=0.1)=0.001328
+[debug] fused_norm_bwd_dA (N=128, P=64, R=4, chunk=16, bb_threads=256) stable_max_rel=0.006586 max_abs=3.410196e-01 bad_frac(rtol=0.1,atol=0.1)=0.001328
 [debug] fused_norm_bwd_ddt (N=128, P=64, R=4, chunk=16, bb_threads=256) stable_max_rel=0.005543 max_abs=1.709869e+00 bad_frac(rtol=0.1,atol=0.1)=0.011833
 [debug] fused_norm_bwd_dtrap (N=128, P=64, R=4, chunk=16, bb_threads=256) stable_max_rel=0.006474 max_abs=1.705747e-01 bad_frac(rtol=0.1,atol=0.1)=0.000000
 [debug] fused_norm_bwd_dq_bias (N=128, P=64, R=4, chunk=16, bb_threads=256) stable_max_rel=0.009883 max_abs=4.498296e-01 bad_frac(rtol=0.1,atol=0.1)=0.002197
@@ -575,7 +578,7 @@ ________ test_bwd_varlen_relative_errors_lt_10pct[N32_P64_R4_C16_BB256] ________
 [debug] bwd_varlen_dq (N=32, P=64, R=4, chunk=16, seqlens=[31, 77, 48, 63], bb_threads=256) stable_max_rel=0.008432 max_abs=9.944916e-02 bad_frac(rtol=0.1,atol=0.1)=0.000000
 [debug] bwd_varlen_dk (N=32, P=64, R=4, chunk=16, seqlens=[31, 77, 48, 63], bb_threads=256) stable_max_rel=0.007625 max_abs=9.930897e-02 bad_frac(rtol=0.1,atol=0.1)=0.000000
 [debug] bwd_varlen_dv (N=32, P=64, R=4, chunk=16, seqlens=[31, 77, 48, 63], bb_threads=256) stable_max_rel=0.005719 max_abs=2.377071e-01 bad_frac(rtol=0.1,atol=0.1)=0.000000
-[debug] bwd_varlen_dA (N=32, P=64, R=4, chunk=16, seqlens=[31, 77, 48, 63], bb_threads=256) stable_max_rel=0.006071 max_abs=5.629730e-01 bad_frac(rtol=0.1,atol=0.1)=0.007420
+[debug] bwd_varlen_dA (N=32, P=64, R=4, chunk=16, seqlens=[31, 77, 48, 63], bb_threads=256) stable_max_rel=0.006071 max_abs=5.629654e-01 bad_frac(rtol=0.1,atol=0.1)=0.007420
 [debug] bwd_varlen_ddt (N=32, P=64, R=4, chunk=16, seqlens=[31, 77, 48, 63], bb_threads=256) stable_max_rel=0.006057 max_abs=1.470200e+00 bad_frac(rtol=0.1,atol=0.1)=0.016553
 [debug] bwd_varlen_dtrap (N=32, P=64, R=4, chunk=16, seqlens=[31, 77, 48, 63], bb_threads=256) stable_max_rel=0.005305 max_abs=1.218977e-01 bad_frac(rtol=0.1,atol=0.1)=0.000000
 [debug] bwd_varlen_dq_bias (N=32, P=64, R=4, chunk=16, seqlens=[31, 77, 48, 63], bb_threads=256) stable_max_rel=0.005722 max_abs=1.854553e-01 bad_frac(rtol=0.1,atol=0.1)=0.000000
@@ -591,7 +594,7 @@ ________ test_bwd_varlen_relative_errors_lt_10pct[N64_P64_R4_C16_BB256] ________
 [debug] bwd_varlen_dq (N=64, P=64, R=4, chunk=16, seqlens=[31, 77, 48, 63], bb_threads=256) stable_max_rel=0.006186 max_abs=9.177589e-02 bad_frac(rtol=0.1,atol=0.1)=0.000000
 [debug] bwd_varlen_dk (N=64, P=64, R=4, chunk=16, seqlens=[31, 77, 48, 63], bb_threads=256) stable_max_rel=0.009056 max_abs=1.530724e-01 bad_frac(rtol=0.1,atol=0.1)=0.000000
 [debug] bwd_varlen_dv (N=64, P=64, R=4, chunk=16, seqlens=[31, 77, 48, 63], bb_threads=256) stable_max_rel=0.005606 max_abs=2.142220e-01 bad_frac(rtol=0.1,atol=0.1)=0.000000
-[debug] bwd_varlen_dA (N=64, P=64, R=4, chunk=16, seqlens=[31, 77, 48, 63], bb_threads=256) stable_max_rel=0.006120 max_abs=7.205071e-01 bad_frac(rtol=0.1,atol=0.1)=0.011416
+[debug] bwd_varlen_dA (N=64, P=64, R=4, chunk=16, seqlens=[31, 77, 48, 63], bb_threads=256) stable_max_rel=0.006120 max_abs=7.205081e-01 bad_frac(rtol=0.1,atol=0.1)=0.011416
 [debug] bwd_varlen_ddt (N=64, P=64, R=4, chunk=16, seqlens=[31, 77, 48, 63], bb_threads=256) stable_max_rel=0.008816 max_abs=1.982452e+00 bad_frac(rtol=0.1,atol=0.1)=0.021689
 [debug] bwd_varlen_dtrap (N=64, P=64, R=4, chunk=16, seqlens=[31, 77, 48, 63], bb_threads=256) stable_max_rel=0.004519 max_abs=2.165661e-01 bad_frac(rtol=0.1,atol=0.1)=0.000000
 [debug] bwd_varlen_dq_bias (N=64, P=64, R=4, chunk=16, seqlens=[31, 77, 48, 63], bb_threads=256) stable_max_rel=0.008657 max_abs=1.991310e-01 bad_frac(rtol=0.1,atol=0.1)=0.000000
@@ -661,7 +664,7 @@ __ test_fused_norm_bwd_varlen_relative_errors_lt_10pct[N32_P64_R4_C16_BB256] ___
 [debug] fused_norm_bwd_varlen_dq (N=32, P=64, R=4, chunk=16, seqlens=[31, 77, 48, 63], bb_threads=256) stable_max_rel=0.007673 max_abs=6.276512e-02 bad_frac(rtol=0.1,atol=0.1)=0.000000
 [debug] fused_norm_bwd_varlen_dk (N=32, P=64, R=4, chunk=16, seqlens=[31, 77, 48, 63], bb_threads=256) stable_max_rel=0.004532 max_abs=4.865837e-02 bad_frac(rtol=0.1,atol=0.1)=0.000000
 [debug] fused_norm_bwd_varlen_dv (N=32, P=64, R=4, chunk=16, seqlens=[31, 77, 48, 63], bb_threads=256) stable_max_rel=0.005064 max_abs=1.067810e-01 bad_frac(rtol=0.1,atol=0.1)=0.000000
-[debug] fused_norm_bwd_varlen_dA (N=32, P=64, R=4, chunk=16, seqlens=[31, 77, 48, 63], bb_threads=256) stable_max_rel=0.004251 max_abs=1.759124e-01 bad_frac(rtol=0.1,atol=0.1)=0.000285
+[debug] fused_norm_bwd_varlen_dA (N=32, P=64, R=4, chunk=16, seqlens=[31, 77, 48, 63], bb_threads=256) stable_max_rel=0.004251 max_abs=1.759114e-01 bad_frac(rtol=0.1,atol=0.1)=0.000285
 [debug] fused_norm_bwd_varlen_ddt (N=32, P=64, R=4, chunk=16, seqlens=[31, 77, 48, 63], bb_threads=256) stable_max_rel=0.008219 max_abs=2.104156e+00 bad_frac(rtol=0.1,atol=0.1)=0.008276
 [debug] fused_norm_bwd_varlen_dtrap (N=32, P=64, R=4, chunk=16, seqlens=[31, 77, 48, 63], bb_threads=256) stable_max_rel=0.006252 max_abs=8.148098e-02 bad_frac(rtol=0.1,atol=0.1)=0.000000
 [debug] fused_norm_bwd_varlen_dq_bias (N=32, P=64, R=4, chunk=16, seqlens=[31, 77, 48, 63], bb_threads=256) stable_max_rel=0.007353 max_abs=1.145544e-01 bad_frac(rtol=0.1,atol=0.1)=0.000000
@@ -678,7 +681,7 @@ __ test_fused_norm_bwd_varlen_relative_errors_lt_10pct[N128_P64_R4_C16_BB256] __
 [debug] fused_norm_bwd_varlen_dq (N=128, P=64, R=4, chunk=16, seqlens=[31, 77, 48, 63], bb_threads=256) stable_max_rel=0.007094 max_abs=3.447962e-02 bad_frac(rtol=0.1,atol=0.1)=0.000000
 [debug] fused_norm_bwd_varlen_dk (N=128, P=64, R=4, chunk=16, seqlens=[31, 77, 48, 63], bb_threads=256) stable_max_rel=0.007606 max_abs=2.826619e-02 bad_frac(rtol=0.1,atol=0.1)=0.000000
 [debug] fused_norm_bwd_varlen_dv (N=128, P=64, R=4, chunk=16, seqlens=[31, 77, 48, 63], bb_threads=256) stable_max_rel=0.006916 max_abs=1.322098e-01 bad_frac(rtol=0.1,atol=0.1)=0.000000
-[debug] fused_norm_bwd_varlen_dA (N=128, P=64, R=4, chunk=16, seqlens=[31, 77, 48, 63], bb_threads=256) stable_max_rel=0.006225 max_abs=2.113333e-01 bad_frac(rtol=0.1,atol=0.1)=0.000285
+[debug] fused_norm_bwd_varlen_dA (N=128, P=64, R=4, chunk=16, seqlens=[31, 77, 48, 63], bb_threads=256) stable_max_rel=0.006225 max_abs=2.113295e-01 bad_frac(rtol=0.1,atol=0.1)=0.000285
 [debug] fused_norm_bwd_varlen_ddt (N=128, P=64, R=4, chunk=16, seqlens=[31, 77, 48, 63], bb_threads=256) stable_max_rel=0.012772 max_abs=3.558319e+00 bad_frac(rtol=0.1,atol=0.1)=0.015126
 [debug] fused_norm_bwd_varlen_dtrap (N=128, P=64, R=4, chunk=16, seqlens=[31, 77, 48, 63], bb_threads=256) stable_max_rel=0.009567 max_abs=9.326029e-02 bad_frac(rtol=0.1,atol=0.1)=0.000000
 [debug] fused_norm_bwd_varlen_dq_bias (N=128, P=64, R=4, chunk=16, seqlens=[31, 77, 48, 63], bb_threads=256) stable_max_rel=0.006270 max_abs=5.277061e-02 bad_frac(rtol=0.1,atol=0.1)=0.000000
@@ -721,7 +724,7 @@ ___ test_bwd_varlen_prereduce_relative_errors_lt_10pct[N64_P64_R4_C16_BB256] ___
 [debug] bwd_varlen_prereduce_dq (N=64, P=64, R=4, chunk=16, seqlens=[31, 77, 48, 63], bb_threads=256) stable_max_rel=0.006663 max_abs=2.375026e-01 bad_frac(rtol=0.1,atol=0.1)=0.000321
 [debug] bwd_varlen_prereduce_dk (N=64, P=64, R=4, chunk=16, seqlens=[31, 77, 48, 63], bb_threads=256) stable_max_rel=0.007734 max_abs=3.379583e-01 bad_frac(rtol=0.1,atol=0.1)=0.000268
 [debug] bwd_varlen_prereduce_dv (N=64, P=64, R=4, chunk=16, seqlens=[31, 77, 48, 63], bb_threads=256) stable_max_rel=0.008277 max_abs=8.156052e-01 bad_frac(rtol=0.1,atol=0.1)=0.000178
-[debug] bwd_varlen_prereduce_dA (N=64, P=64, R=4, chunk=16, seqlens=[31, 77, 48, 63], bb_threads=256) stable_max_rel=0.004843 max_abs=2.904602e+00 bad_frac(rtol=0.1,atol=0.1)=0.033105
+[debug] bwd_varlen_prereduce_dA (N=64, P=64, R=4, chunk=16, seqlens=[31, 77, 48, 63], bb_threads=256) stable_max_rel=0.004843 max_abs=2.904602e+00 bad_frac(rtol=0.1,atol=0.1)=0.032820
 [debug] bwd_varlen_prereduce_ddt (N=64, P=64, R=4, chunk=16, seqlens=[31, 77, 48, 63], bb_threads=256) stable_max_rel=0.005163 max_abs=6.569366e+00 bad_frac(rtol=0.1,atol=0.1)=0.028253
 [debug] bwd_varlen_prereduce_dtrap (N=64, P=64, R=4, chunk=16, seqlens=[31, 77, 48, 63], bb_threads=256) stable_max_rel=0.006305 max_abs=9.872074e-01 bad_frac(rtol=0.1,atol=0.1)=0.001142
 [debug] bwd_varlen_prereduce_dq_bias (N=64, P=64, R=4, chunk=16, seqlens=[31, 77, 48, 63], bb_threads=256) stable_max_rel=0.004933 max_abs=6.280746e-01 bad_frac(rtol=0.1,atol=0.1)=0.011963
@@ -1400,4 +1403,4 @@ PASSED tests/ops/triton/test_mamba3_siso.py::test_prune_mamba3_siso_fwd_configs[
 PASSED tests/ops/triton/test_mamba3_siso.py::test_prune_mamba3_siso_fwd_configs[10-3-True]
 PASSED tests/ops/triton/test_mamba3_siso.py::test_prune_mamba3_siso_fwd_configs[12-0-True]
 SKIPPED [1] tests/ops/triton/test_mamba3_siso.py:958: Blackwell-specific regression -- skipping on compute capability 9.x
-107 passed, 1 skipped, 4344 warnings in 2262.32s (0:37:42)
+107 passed, 1 skipped, 1609 warnings in 748.63s (0:12:28)

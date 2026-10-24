@@ -1,5 +1,5 @@
-A: /home/kyle/mamba-h100/validation/h100/results/suite-base.log: 107 passed, 1 skipped, 3608 warnings in 3899.71s (1:04:59)
-B: /home/kyle/mamba-h100/validation/h100/results/suite-new.log: 107 passed, 1 skipped, 4344 warnings in 2262.32s (0:37:42)
+A: results/suite-base.log: 107 passed, 1 skipped, 3608 warnings in 3899.71s (1:04:59)
+B: results/suite-new.log: 107 passed, 1 skipped, 1609 warnings in 748.63s (0:12:28)
 
 Tests whose outcome differs: 0
 

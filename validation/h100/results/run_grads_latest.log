@@ -1,0 +1,17 @@
+done bwd-N16_P64_R4_C8_BB128
+done bwd-N32_P64_R4_C16_BB256
+done bwd-N64_P64_R4_C16_BB256
+done bwd-N128_P64_R4_C16_BB256
+done bwd-N256_P64_R4_C8_BB256
+done bwd-N64_P128_R4_C16_BB256
+done bwd-N128_P32_R4_C16_BB256
+done bwd-N128_P128_R4_C8_BB256
+done bwd-N128_P64_R8_C8_BB256
+done bwd-N128_P64_R2_C32_BB256
+done bwd-N128_P64_R1_C64_BB256
+done bwd_varlen-N16_P64_R4_C8_BB128
+done bwd_varlen-N32_P64_R4_C16_BB256
+done bwd_varlen-N64_P64_R4_C16_BB256
+done bwd_varlen-N128_P64_R4_C16_BB256
+done bwd_varlen-N128_P64_R2_C32_BB256
+done bwd_varlen-N128_P64_R1_C64_BB256

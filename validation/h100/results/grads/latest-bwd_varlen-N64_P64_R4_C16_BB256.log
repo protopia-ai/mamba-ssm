@@ -1,0 +1,5 @@
+2026-10-24 05:51:10  [TileLang:tilelang.jit.kernel:INFO] (kernel.py:137): TileLang begins to compile kernel `mamba_mimo_bwd_fwd_kernel` with `out_idx=[]`
+2026-10-24 05:51:19  [TileLang:tilelang.jit.kernel:INFO] (kernel.py:145): TileLang completes to compile kernel `mamba_mimo_bwd_fwd_kernel`
+2026-10-24 05:51:21  [TileLang:tilelang.jit.kernel:INFO] (kernel.py:137): TileLang begins to compile kernel `mamba_mimo_bwd_bwd_kernel` with `out_idx=[]`
+2026-10-24 05:51:39  [TileLang:tilelang.jit.kernel:INFO] (kernel.py:145): TileLang completes to compile kernel `mamba_mimo_bwd_bwd_kernel`
+saved bwd_varlen N64_P64_R4_C16_BB256 median 0.939 ms -> /home/kyle/mamba-h100/validation/h100/results/grads/latest-bwd_varlen-N64_P64_R4_C16_BB256.pt

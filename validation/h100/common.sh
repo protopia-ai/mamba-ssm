@@ -15,7 +15,7 @@ mkdir -p "$WORK" "$RESULTS"
 src_for() {
     case "$1" in
         base) echo "$WORK/base-src" ;;
-        new) echo "$REPO" ;;
+        new|latest) echo "$REPO" ;;
         *) echo "unknown env: $1" >&2; return 1 ;;
     esac
 }
