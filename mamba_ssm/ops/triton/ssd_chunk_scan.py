@@ -20,13 +20,10 @@ from mamba_ssm.utils.determinism import (
     finalize_tile_workspace,
     use_deterministic_mode,
     autotune_configs,
+    init_to_zero,
 )
 
 TRITON_22 = version.parse(triton.__version__) >= version.parse('2.2.0')
-
-
-def init_to_zero(names):
-    return lambda nargs: [nargs[name].zero_() for name in names if nargs[name] is not None]
 
 
 @triton.autotune(
@@ -73,7 +70,8 @@ def _chunk_scan_fwd_kernel(
     BLOCK_SIZE_DSTATE: tl.constexpr,
     IS_TRITON_22: tl.constexpr,
 ):
-    pid_bc = tl.program_id(axis=1)
+    # int64 to avoid int32 overflow, see TODO: LinkToFutureIssueInMamba
+    pid_bc = tl.program_id(axis=1).to(tl.int64)
     pid_c = pid_bc // batch
     pid_b = pid_bc - pid_c * batch
     pid_h = tl.program_id(axis=2)
@@ -218,7 +216,8 @@ def _chunk_scan_fwd_kernel_wip(
     BLOCK_SIZE_M: tl.constexpr, BLOCK_SIZE_N: tl.constexpr,
     BLOCK_SIZE_DSTATE: tl.constexpr,
 ):
-    pid_bc = tl.program_id(axis=1)
+    # int64 to avoid int32 overflow, see TODO: LinkToFutureIssueInMamba
+    pid_bc = tl.program_id(axis=1).to(tl.int64)
     pid_c = pid_bc // batch
     pid_b = pid_bc - pid_c * batch
     pid_h = tl.program_id(axis=2)
@@ -338,10 +337,10 @@ def _chunk_scan_fwd_kernel_wip(
 
 @triton.autotune(
     configs=autotune_configs([
-        triton.Config({'BLOCK_SIZE_M': 32}),
-        triton.Config({'BLOCK_SIZE_M': 64}),
-        triton.Config({'BLOCK_SIZE_M': 128}),
-        triton.Config({'BLOCK_SIZE_M': 256}),
+        triton.Config({'BLOCK_SIZE_M': 32}, pre_hook=init_to_zero(["dD_ptr"])),
+        triton.Config({'BLOCK_SIZE_M': 64}, pre_hook=init_to_zero(["dD_ptr"])),
+        triton.Config({'BLOCK_SIZE_M': 128}, pre_hook=init_to_zero(["dD_ptr"])),
+        triton.Config({'BLOCK_SIZE_M': 256}, pre_hook=init_to_zero(["dD_ptr"])),
     ]),
     key=["chunk_size", "hdim"],
 )
@@ -370,7 +369,8 @@ def _chunk_scan_bwd_dz_kernel(
     RECOMPUTE_OUTPUT: tl.constexpr,
     BLOCK_SIZE_M: tl.constexpr, BLOCK_SIZE_N: tl.constexpr,
 ):
-    pid_bc = tl.program_id(axis=1)
+    # int64 to avoid int32 overflow, see TODO: LinkToFutureIssueInMamba
+    pid_bc = tl.program_id(axis=1).to(tl.int64)
     pid_c = pid_bc // batch
     pid_b = pid_bc - pid_c * batch
     pid_h = tl.program_id(axis=2)
@@ -462,7 +462,8 @@ def _chunk_scan_bwd_dstates_kernel(
     HAS_SEQ_IDX: tl.constexpr,
     BLOCK_SIZE_M: tl.constexpr, BLOCK_SIZE_N: tl.constexpr, BLOCK_SIZE_K: tl.constexpr,
 ):
-    pid_bc = tl.program_id(axis=1)
+    # int64 to avoid int32 overflow, see TODO: LinkToFutureIssueInMamba
+    pid_bc = tl.program_id(axis=1).to(tl.int64)
     pid_c = pid_bc // batch
     pid_b = pid_bc - pid_c * batch
     pid_h = tl.program_id(axis=2)
@@ -548,7 +549,8 @@ def _chunk_scan_bwd_dc_kernel(
     DETERMINISTIC_REDUCTION: tl.constexpr,
     BLOCK_SIZE_M: tl.constexpr, BLOCK_SIZE_N: tl.constexpr, BLOCK_SIZE_K: tl.constexpr,
 ):
-    pid_bc = tl.program_id(axis=1)
+    # int64 to avoid int32 overflow, see TODO: LinkToFutureIssueInMamba
+    pid_bc = tl.program_id(axis=1).to(tl.int64)
     pid_c = pid_bc // batch
     pid_b = pid_bc - pid_c * batch
     pid_sg = tl.program_id(axis=2)
@@ -661,7 +663,8 @@ def _chunk_scan_bwd_dx_kernel(
     DETERMINISTIC_REDUCTION: tl.constexpr,
     BLOCK_SIZE_M: tl.constexpr, BLOCK_SIZE_N: tl.constexpr, BLOCK_SIZE_K: tl.constexpr,
 ):
-    pid_bc = tl.program_id(axis=1)
+    # int64 to avoid int32 overflow, see TODO: LinkToFutureIssueInMamba
+    pid_bc = tl.program_id(axis=1).to(tl.int64)
     pid_c = pid_bc // batch
     pid_b = pid_bc - pid_c * batch
     pid_h = tl.program_id(axis=2)
@@ -751,12 +754,12 @@ _CHUNK_SCAN_BWD_DX_MIN_BLOCK_N = min(
 # Disabling HAS_DDA_CS for now since it's much slower
 @triton.autotune(
     configs=autotune_configs([
-        triton.Config({'BLOCK_SIZE_M': 32, 'BLOCK_SIZE_N': 128}, num_stages=3, num_warps=4),
-        triton.Config({'BLOCK_SIZE_M': 128, 'BLOCK_SIZE_N': 32}, num_stages=3, num_warps=4),
-        triton.Config({'BLOCK_SIZE_M': 64, 'BLOCK_SIZE_N': 64}, num_stages=3, num_warps=4),
-        triton.Config({'BLOCK_SIZE_M': 64, 'BLOCK_SIZE_N': 32}, num_stages=3, num_warps=4),
-        triton.Config({'BLOCK_SIZE_M': 32, 'BLOCK_SIZE_N': 64}, num_stages=3, num_warps=4),
-        triton.Config({'BLOCK_SIZE_M': 32, 'BLOCK_SIZE_N': 32}, num_stages=3, num_warps=4),
+        triton.Config({'BLOCK_SIZE_M': 32, 'BLOCK_SIZE_N': 128}, num_stages=3, num_warps=4, pre_hook=init_to_zero(["ddA_cumsum_ptr"])),
+        triton.Config({'BLOCK_SIZE_M': 128, 'BLOCK_SIZE_N': 32}, num_stages=3, num_warps=4, pre_hook=init_to_zero(["ddA_cumsum_ptr"])),
+        triton.Config({'BLOCK_SIZE_M': 64, 'BLOCK_SIZE_N': 64}, num_stages=3, num_warps=4, pre_hook=init_to_zero(["ddA_cumsum_ptr"])),
+        triton.Config({'BLOCK_SIZE_M': 64, 'BLOCK_SIZE_N': 32}, num_stages=3, num_warps=4, pre_hook=init_to_zero(["ddA_cumsum_ptr"])),
+        triton.Config({'BLOCK_SIZE_M': 32, 'BLOCK_SIZE_N': 64}, num_stages=3, num_warps=4, pre_hook=init_to_zero(["ddA_cumsum_ptr"])),
+        triton.Config({'BLOCK_SIZE_M': 32, 'BLOCK_SIZE_N': 32}, num_stages=3, num_warps=4, pre_hook=init_to_zero(["ddA_cumsum_ptr"])),
         # triton.Config({'BLOCK_SIZE_M': 16}, num_stages=3, num_warps=4),
         # triton.Config({'BLOCK_SIZE_M': 32}, num_stages=3, num_warps=4),
         # triton.Config({'BLOCK_SIZE_M': 64}, num_stages=3, num_warps=4),
@@ -792,7 +795,8 @@ def _chunk_scan_bwd_dcb_kernel(
     HAS_SEQ_IDX: tl.constexpr,
     BLOCK_SIZE_M: tl.constexpr, BLOCK_SIZE_N: tl.constexpr, BLOCK_SIZE_K: tl.constexpr,
 ):
-    pid_bc = tl.program_id(axis=1)
+    # int64 to avoid int32 overflow, see TODO: LinkToFutureIssueInMamba
+    pid_bc = tl.program_id(axis=1).to(tl.int64)
     pid_c = pid_bc // batch
     pid_b = pid_bc - pid_c * batch
     pid_sg = tl.program_id(axis=2)
@@ -908,7 +912,8 @@ def _chunk_scan_bwd_ddAcs_unstable_kernel(
     SUBTRACT_DDTDT: tl.constexpr,
     BLOCK_SIZE_M: tl.constexpr, BLOCK_SIZE_N: tl.constexpr,
 ):
-    pid_bc = tl.program_id(axis=1)
+    # int64 to avoid int32 overflow, see TODO: LinkToFutureIssueInMamba
+    pid_bc = tl.program_id(axis=1).to(tl.int64)
     pid_c = pid_bc // batch
     pid_b = pid_bc - pid_c * batch
     pid_h = tl.program_id(axis=2)
@@ -993,7 +998,8 @@ def _chunk_scan_bwd_ddAcs_stable_kernel_old(
     # Meta-parameters
     BLOCK_SIZE_M: tl.constexpr, BLOCK_SIZE_N: tl.constexpr, BLOCK_SIZE_K: tl.constexpr,
 ):
-    pid_bc = tl.program_id(axis=1)
+    # int64 to avoid int32 overflow, see TODO: LinkToFutureIssueInMamba
+    pid_bc = tl.program_id(axis=1).to(tl.int64)
     pid_c = pid_bc // batch
     pid_b = pid_bc - pid_c * batch
     pid_h = tl.program_id(axis=2)
@@ -1082,15 +1088,15 @@ def _chunk_scan_bwd_ddAcs_stable_kernel_old(
 
 @triton.autotune(
     configs=autotune_configs([
-        triton.Config({'BLOCK_SIZE_M': 32, 'BLOCK_SIZE_N': 32}, num_stages=3, num_warps=4),
+        triton.Config({'BLOCK_SIZE_M': 32, 'BLOCK_SIZE_N': 32}, num_stages=3, num_warps=4, pre_hook=init_to_zero(["ddA_cumsum_ptr"])),
         # triton.Config({'BLOCK_SIZE_M': 32, 'BLOCK_SIZE_N': 64}, num_stages=3, num_warps=4),
         # triton.Config({'BLOCK_SIZE_M': 32, 'BLOCK_SIZE_N': 128}, num_stages=3, num_warps=4),
-        triton.Config({'BLOCK_SIZE_M': 64, 'BLOCK_SIZE_N': 32}, num_stages=3, num_warps=4),
-        triton.Config({'BLOCK_SIZE_M': 64, 'BLOCK_SIZE_N': 64}, num_stages=3, num_warps=4),
+        triton.Config({'BLOCK_SIZE_M': 64, 'BLOCK_SIZE_N': 32}, num_stages=3, num_warps=4, pre_hook=init_to_zero(["ddA_cumsum_ptr"])),
+        triton.Config({'BLOCK_SIZE_M': 64, 'BLOCK_SIZE_N': 64}, num_stages=3, num_warps=4, pre_hook=init_to_zero(["ddA_cumsum_ptr"])),
         # triton.Config({'BLOCK_SIZE_M': 64, 'BLOCK_SIZE_N': 128}, num_stages=3, num_warps=4),
-        triton.Config({'BLOCK_SIZE_M': 128, 'BLOCK_SIZE_N': 32}, num_stages=3, num_warps=4),
-        triton.Config({'BLOCK_SIZE_M': 128, 'BLOCK_SIZE_N': 64}, num_stages=3, num_warps=4),
-        triton.Config({'BLOCK_SIZE_M': 128, 'BLOCK_SIZE_N': 128}, num_stages=3, num_warps=4),
+        triton.Config({'BLOCK_SIZE_M': 128, 'BLOCK_SIZE_N': 32}, num_stages=3, num_warps=4, pre_hook=init_to_zero(["ddA_cumsum_ptr"])),
+        triton.Config({'BLOCK_SIZE_M': 128, 'BLOCK_SIZE_N': 64}, num_stages=3, num_warps=4, pre_hook=init_to_zero(["ddA_cumsum_ptr"])),
+        triton.Config({'BLOCK_SIZE_M': 128, 'BLOCK_SIZE_N': 128}, num_stages=3, num_warps=4, pre_hook=init_to_zero(["ddA_cumsum_ptr"])),
     ]),
     key=['chunk_size', 'hdim'],
 )
@@ -1112,7 +1118,8 @@ def _chunk_scan_bwd_ddAcs_stable_kernel(
     # Meta-parameters
     BLOCK_SIZE_M: tl.constexpr, BLOCK_SIZE_N: tl.constexpr, BLOCK_SIZE_K: tl.constexpr,
 ):
-    pid_bc = tl.program_id(axis=1)
+    # int64 to avoid int32 overflow, see TODO: LinkToFutureIssueInMamba
+    pid_bc = tl.program_id(axis=1).to(tl.int64)
     pid_c = pid_bc // batch
     pid_b = pid_bc - pid_c * batch
     pid_h = tl.program_id(axis=2)
@@ -1213,7 +1220,8 @@ def _chunk_scan_bwd_ddAcs_prev_kernel(
     HAS_SEQ_IDX: tl.constexpr,
     BLOCK_SIZE_M: tl.constexpr, BLOCK_SIZE_N: tl.constexpr, BLOCK_SIZE_K: tl.constexpr,
 ):
-    pid_bc = tl.program_id(axis=1)
+    # int64 to avoid int32 overflow, see TODO: LinkToFutureIssueInMamba
+    pid_bc = tl.program_id(axis=1).to(tl.int64)
     pid_c = pid_bc // batch
     pid_b = pid_bc - pid_c * batch
     pid_h = tl.program_id(axis=2)
