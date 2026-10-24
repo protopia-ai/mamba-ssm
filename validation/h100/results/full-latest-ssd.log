@@ -1,0 +1,45 @@
+....................................................                     [100%]
+=============================== warnings summary ===============================
+../mamba-h100-validation/venv-latest/lib/python3.13/site-packages/tilelang/language/eager/builder.py:1171: 14 warnings
+  /home/kyle/mamba-h100-validation/venv-latest/lib/python3.13/site-packages/tilelang/language/eager/builder.py:1171: DeprecationWarning: Failing to pass a value to the 'type_params' parameter of 'typing._eval_type' is deprecated, as it leads to incorrect behaviour when calling typing._eval_type on a stringified annotation that references a PEP 695 type parameter. It will be disallowed in Python 3.15.
+    hints[name] = _eval_type(value, globalns=globalns, localns=localns)
+
+../mamba-h100-validation/venv-latest/lib/python3.13/site-packages/quack/copy_utils.py:15
+../mamba-h100-validation/venv-latest/lib/python3.13/site-packages/quack/copy_utils.py:15
+  /home/kyle/mamba-h100-validation/venv-latest/lib/python3.13/site-packages/quack/copy_utils.py:15: DeprecationWarning: cutlass.utils.LayoutEnum is deprecated; use cutlass.tensor_utils.LayoutEnum instead. It will be removed in a future release.
+    from cutlass.utils import LayoutEnum, block_copy
+
+../mamba-h100-validation/venv-latest/lib/python3.13/site-packages/quack/copy_utils.py:562
+  /home/kyle/mamba-h100-validation/venv-latest/lib/python3.13/site-packages/quack/copy_utils.py:562: DeprecationWarning: cutlass.utils.LayoutEnum is deprecated; use cutlass.tensor_utils.LayoutEnum instead. It will be removed in a future release.
+    layout_c: cutlass.utils.LayoutEnum,
+
+tests/ops/triton/test_ssd.py: 270 warnings
+  /home/kyle/mamba-h100-validation/venv-latest/lib/python3.13/site-packages/triton/compiler/code_generator.py:643: DeprecationWarning: AnnAssign.__init__ missing 1 required positional argument: 'simple'. This will become an error in Python 3.15.
+    init_node = ast.AnnAssign(target=st_target, value=default_value, annotation=annotation)
+
+tests/ops/triton/test_ssd.py::test_causal_conv1d_bwd_dx_given_ensure_stride_copy_path
+  /home/kyle/mamba-h100/tests/ops/triton/test_ssd.py:939: RuntimeWarning: causal_conv1d may not safely address a tensor with 2048 elements unless its CUDA kernels use widened strides.
+    dx_in = rearrange(ensure_stride(dxBC_given), "b s d -> b d s")
+
+tests/ops/triton/test_ssd.py::test_mamba_split_conv1d_scan_combined_bwd_ensure_stride_copy_path
+  /home/kyle/mamba-h100/mamba_ssm/ops/triton/ssd_combined.py:852: RuntimeWarning: causal_conv1d may not safely address a tensor with 98304 elements unless its CUDA kernels use widened strides.
+    causal_conv1d_fwd_function(rearrange(ensure_stride(xBC), "b s d -> b d s"),
+
+tests/ops/triton/test_ssd.py::test_mamba_split_conv1d_scan_combined_bwd_ensure_stride_copy_path
+  /home/kyle/mamba-h100/mamba_ssm/ops/triton/ssd_combined.py:927: RuntimeWarning: causal_conv1d may not safely address a tensor with 98304 elements unless its CUDA kernels use widened strides.
+    causal_conv1d_fwd_function(rearrange(ensure_stride(xBC), "b s d -> b d s"),
+
+tests/ops/triton/test_ssd.py::test_mamba_split_conv1d_scan_combined_bwd_ensure_stride_copy_path
+  /home/kyle/mamba-h100/mamba_ssm/ops/triton/ssd_combined.py:977: RuntimeWarning: causal_conv1d may not safely address a tensor with 98304 elements unless its CUDA kernels use widened strides.
+    rearrange(ensure_stride(xBC), "b s d -> b d s"), conv1d_weight, conv1d_bias,
+
+tests/ops/triton/test_ssd.py::test_mamba_split_conv1d_scan_combined_bwd_ensure_stride_copy_path
+  /home/kyle/mamba-h100/mamba_ssm/ops/triton/ssd_combined.py:979: RuntimeWarning: causal_conv1d may not safely address a tensor with 98304 elements unless its CUDA kernels use widened strides.
+    rearrange(ensure_stride(dxBC), "b s d -> b d s"), seq_idx, None, None,
+
+tests/ops/triton/test_ssd.py::test_mamba_split_conv1d_scan_combined_bwd_ensure_stride_copy_path
+  /home/kyle/mamba-h100/mamba_ssm/ops/triton/ssd_combined.py:980: RuntimeWarning: causal_conv1d may not safely address a tensor with 98304 elements unless its CUDA kernels use widened strides.
+    rearrange(ensure_stride(dxBC_given), "b s d -> b d s"), False, ctx.activation in ["silu", "swish"]
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+52 passed, 293 warnings in 381.95s (0:06:21)

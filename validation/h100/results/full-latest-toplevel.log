@@ -1,0 +1,22 @@
+......................................                                   [100%]
+=============================== warnings summary ===============================
+../mamba-h100-validation/venv-latest/lib/python3.13/site-packages/tilelang/language/eager/builder.py:1171: 14 warnings
+  /home/kyle/mamba-h100-validation/venv-latest/lib/python3.13/site-packages/tilelang/language/eager/builder.py:1171: DeprecationWarning: Failing to pass a value to the 'type_params' parameter of 'typing._eval_type' is deprecated, as it leads to incorrect behaviour when calling typing._eval_type on a stringified annotation that references a PEP 695 type parameter. It will be disallowed in Python 3.15.
+    hints[name] = _eval_type(value, globalns=globalns, localns=localns)
+
+../mamba-h100-validation/venv-latest/lib/python3.13/site-packages/quack/copy_utils.py:15
+../mamba-h100-validation/venv-latest/lib/python3.13/site-packages/quack/copy_utils.py:15
+  /home/kyle/mamba-h100-validation/venv-latest/lib/python3.13/site-packages/quack/copy_utils.py:15: DeprecationWarning: cutlass.utils.LayoutEnum is deprecated; use cutlass.tensor_utils.LayoutEnum instead. It will be removed in a future release.
+    from cutlass.utils import LayoutEnum, block_copy
+
+../mamba-h100-validation/venv-latest/lib/python3.13/site-packages/quack/copy_utils.py:562
+  /home/kyle/mamba-h100-validation/venv-latest/lib/python3.13/site-packages/quack/copy_utils.py:562: DeprecationWarning: cutlass.utils.LayoutEnum is deprecated; use cutlass.tensor_utils.LayoutEnum instead. It will be removed in a future release.
+    layout_c: cutlass.utils.LayoutEnum,
+
+tests/test_determinism.py: 277 warnings
+tests/test_generation.py: 30 warnings
+  /home/kyle/mamba-h100-validation/venv-latest/lib/python3.13/site-packages/triton/compiler/code_generator.py:643: DeprecationWarning: AnnAssign.__init__ missing 1 required positional argument: 'simple'. This will become an error in Python 3.15.
+    init_node = ast.AnnAssign(target=st_target, value=default_value, annotation=annotation)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+38 passed, 324 warnings in 255.59s (0:04:15)

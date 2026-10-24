@@ -1,0 +1,5 @@
+# Pre-existing upstream failure, not caused by this upgrade (2026-10-24)
+tests/ops/triton/test_selective_state_update.py::test_selective_state_update[4096-64-True-itype2]
+Seeded bf16 case misses allclose(rtol=0.01, atol=0.05) by a few elements.
+Fails identically on: upstream e9594ce + tilelang 0.1.8/torch 2.13.0 (base env); this branch on torch 2.13.0/triton 3.7.1; this branch on torch 2.14.1/triton 3.8.0.
+Neither the kernel nor the test is changed by this branch or by protopia-ai main.
