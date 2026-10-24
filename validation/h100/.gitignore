@@ -1,0 +1,3 @@
+# Saved gradient tensors are large; commit the logs and summaries only.
+results/grads/*.pt
+__pycache__/
