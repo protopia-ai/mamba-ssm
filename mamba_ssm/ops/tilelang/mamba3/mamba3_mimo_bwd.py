@@ -1204,23 +1204,24 @@ def mamba_mimo_bwd_bwd(
                 # Contribution from state passing.
                 T.copy(states_frag, states_shared)
                 ddA_state_passing = T.alloc_fragment([1], T.float32)
-                ddA_state_passing_prereduce_frag = T.alloc_fragment([N, P], T.float32)
                 da_cs_sum = T.alloc_var(T.float32)
                 if tail_len > 0 and chunk_idx == nchunks - 1:
                     T.copy(DA_CS[i_b, i_h, S - 1], da_cs_sum)
                 else:
                     T.copy(DA_CS[i_b, i_h, chunk_start+chunk_size-1], da_cs_sum)
+                # Accumulate per thread, then reduce across the block once. TileLang 0.1.15
+                # cannot reduce a flattened [N*P] view, and reducing over P first costs one
+                # block-wide AllReduce per N row this thread owns.
+                ddA_state_passing_acc = T.alloc_reducer([1], T.float32, op="sum")
+                T.reducer_init(ddA_state_passing_acc)
                 for n, p in T.Parallel(N, P):
-                    ddA_state_passing_prereduce_frag[n, p] = (
+                    T.reducer_update(
+                        ddA_state_passing_acc[0],
                         states_frag[n, p]
                         * dstates_frag[n, p]
                         * T.exp(da_cs_sum)
                     )
-                # Reduce in two stages: TileLang 0.1.15 cannot lower a single
-                # reduction over the flattened [N*P] view of this 2D fragment.
-                ddA_state_passing_rowsum = T.alloc_fragment([N], T.float32)
-                T.reduce_sum(ddA_state_passing_prereduce_frag, ddA_state_passing_rowsum, dim=-1, clear=True)
-                T.reduce_sum(ddA_state_passing_rowsum, ddA_state_passing, dim=-1, clear=True)
+                T.finalize_reducer(ddA_state_passing_acc, ddA_state_passing)
                 dda_frag = T.alloc_fragment([chunk_size,], T.float32)
                 for cs in T.Parallel(chunk_size):
                     dda_frag[cs] = ddA_state_passing[0]
